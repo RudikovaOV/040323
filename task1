@@ -1,0 +1,23 @@
+
+
+from tkinter import *
+
+def onclick():
+    txt = txt_entr.get()
+    print(type(txt))
+    lbl.configure(text=txt)
+
+main_window = Tk()
+main_window.title("Первая программа")
+main_window.geometry("600x600")
+#элементы интерфейса: кнопки, поле ввода, надпись, выпадающий список, checkbox
+#radiobutton, всплывающие сообщения
+
+lbl = Label(main_window, text="Привет мир!")
+lbl.grid(column=0, row=0)
+btn_ok = Button(main_window, text="Нажми меня!", command=onclick)
+btn_ok.grid(column=1, row=0)
+txt_entr = Entry(main_window, width=40)
+txt_entr.grid(column=2, row=1)
+
+main_window.mainloop() #ставим в самый конец
