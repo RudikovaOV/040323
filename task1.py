@@ -8,41 +8,47 @@ znak = ''
 def onclick_plus():
     global arg1
     global znak
-    arg1 = int(rezultat['text'])
+    arg1 = float(rezultat['text'])
     znak = '+'
     rezultat.configure(text='')
 
 def onclick_minus():
     global arg1
     global znak
-    arg1 = int(rezultat['text'])
+    arg1 = float(rezultat['text'])
     znak = '-'
     rezultat.configure(text='')
 
 def onclick_umnozhit():
     global arg1
     global znak
-    arg1 = int(rezultat['text'])
+    arg1 = float(rezultat['text'])
     znak = '*'
     rezultat.configure(text='')
 
 def onclick_delenie():
     global arg1
     global znak
-    arg1 = int(rezultat['text'])
+    arg1 = float(rezultat['text'])
     znak = '/'
     rezultat.configure(text='')
 
 def onclick_znak():
-    if int(rezultat['text']) < 0:
-        rezultat.configure(text=rezultat['text'])
+    if float(rezultat['text']) > 0:
+        rezultat.configure(text='-'+rezultat['text'])
+    else:
+        old_text = rezultat['text'].replace("-", "")
+        rezultat.configure(text=old_text)
+
+def onclick_point():
+    rezultat.configure(text= rezultat['text'] + ".")
 
 
 
 def onclick_ravno():
     global arg2
     global znak
-    arg2 = int(rezultat['text'])
+    arg2 = float(rezultat['text'])
     if znak == "+":
         finrezult = arg1 + arg2
     elif znak == "-":
@@ -116,7 +122,7 @@ btn_znak = Button(main_window, text="+/-", command=onclick_znak)
 btn_znak.grid(column=0, row=4)
 btn_0 = Button(main_window, text="0", command=onclick_0)
 btn_0.grid(column=2, row=4)
-btn_point = Button(main_window, text=".", command=onclick)
+btn_point = Button(main_window, text=".", command=onclick_point)
 btn_point.grid(column=3, row=4)
 
 btn_plus = Button(main_window, text="+", command=onclick_plus)
