@@ -1,11 +1,58 @@
 from tkinter import *
 from tkmacosx import Button
 
-#def onclick():
- #   txt = txt_entr.get()
-  #  print(type(txt))
-   # lbl.configure(text=txt)
-znak = 0
+arg1 = 0
+arg2 = 0
+znak = ''
+
+def onclick_plus():
+    global arg1
+    global znak
+    arg1 = int(rezultat['text'])
+    znak = '+'
+    rezultat.configure(text='')
+
+def onclick_minus():
+    global arg1
+    global znak
+    arg1 = int(rezultat['text'])
+    znak = '-'
+    rezultat.configure(text='')
+
+def onclick_umnozhit():
+    global arg1
+    global znak
+    arg1 = int(rezultat['text'])
+    znak = '*'
+    rezultat.configure(text='')
+
+def onclick_delenie():
+    global arg1
+    global znak
+    arg1 = int(rezultat['text'])
+    znak = '/'
+    rezultat.configure(text='')
+
+def onclick_znak():
+    if int(rezultat['text']) < 0:
+        rezultat.configure(text=rezultat['text'])
+
+
+
+def onclick_ravno():
+    global arg2
+    global znak
+    arg2 = int(rezultat['text'])
+    if znak == "+":
+        finrezult = arg1 + arg2
+    elif znak == "-":
+        finrezult = arg1 - arg2
+    elif znak == "*":
+        finrezult = arg1 * arg2
+    elif znak == "/":
+        finrezult = arg1/arg2
+
+    rezultat.configure(text=str(finrezult))
 
 def onclick_1():
     rezultat.configure(text=rezultat['text']+'1')
@@ -32,13 +79,6 @@ def onclick_clear():
 def onclick_clearall():
     rezultat.configure(text='')
 
-def onclick_plus():
-    arg1 = int(rezultat['text'])
-    znak = '+'
-'
-def onclick_ravno():
-    arg2 = int(rezultat['text'])
-    rezultat = arg1 + znak + arg2
 
 def onclick():
     pass
@@ -72,7 +112,7 @@ btn_8.grid(column=2, row=3)
 btn_9 = Button(main_window, text="9", command=onclick_9)
 btn_9.grid(column=3, row=3)
 
-btn_znak = Button(main_window, text="+/-", command=onclick)
+btn_znak = Button(main_window, text="+/-", command=onclick_znak)
 btn_znak.grid(column=0, row=4)
 btn_0 = Button(main_window, text="0", command=onclick_0)
 btn_0.grid(column=2, row=4)
@@ -81,11 +121,11 @@ btn_point.grid(column=3, row=4)
 
 btn_plus = Button(main_window, text="+", command=onclick_plus)
 btn_plus.grid(column=4, row=1)
-btn_minus = Button(main_window, text="-", command=onclick)
+btn_minus = Button(main_window, text="-", command=onclick_minus)
 btn_minus.grid(column=4, row=2)
-btn_umnozhit = Button(main_window, text="*", command=onclick)
+btn_umnozhit = Button(main_window, text="*", command=onclick_umnozhit)
 btn_umnozhit.grid(column=4, row=3)
-btn_delenie = Button(main_window, text="/", command=onclick)
+btn_delenie = Button(main_window, text="/", command=onclick_delenie)
 btn_delenie.grid(column=4, row=4)
 btn_ravno = Button(main_window, text="=", command=onclick_ravno)
 btn_ravno.grid(column=5, row=3)
